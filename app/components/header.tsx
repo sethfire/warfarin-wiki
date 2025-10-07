@@ -5,7 +5,7 @@ import { Search, Menu, Globe, Moon } from "lucide-react";
 export default function Header({ lang }: { lang: string }) {
   return (
     <header className="sticky top-0 z-50 bg-background h-16">
-      <div className="max-w-[1536px] xl:max-w-5xl mx-auto flex h-full items-center justify-between px-4 xl:px-0 ">
+      <div className="max-w-[1536px] mx-auto flex h-full items-center justify-between px-4 xl:pr-64">
         <a href={`/${lang}`} className="flex items-center gap-2">
           <img
             src="/castle3.png"
