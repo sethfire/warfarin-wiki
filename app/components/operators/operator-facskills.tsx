@@ -1,7 +1,7 @@
 import { replaceTags } from "~/lib/tag-definitions";
 
 export default function OperatorFactorySkills({ spaceshipCharSkillTable, spaceshipSkillTable }: { spaceshipCharSkillTable: any, spaceshipSkillTable: any }) {
-  if (!spaceshipCharSkillTable || !spaceshipCharSkillTable.skillList) { return <div className="text-muted-foreground">No Base Skills</div>; }
+  if (!spaceshipCharSkillTable || !spaceshipCharSkillTable.skillList) { return <div className="text-muted-foreground">N/A</div>; }
 
   return (
     <div className="flex flex-col gap-4">

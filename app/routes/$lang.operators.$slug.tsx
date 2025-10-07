@@ -42,7 +42,7 @@ export const handle = {
     { id: "attributes", title: "Attributes" },
     { id: "talents", title: "Talents" },
     { id: "skills", title: "Skills" },
-    { id: "baseskills", title: "Base Skills" },
+    { id: "aicskills", title: "AIC Skills" },
     { id: "potentials", title: "Potentials" },
     { id: "files", title: "Operator File" },
     { id: "dialogue", title: "Dialogue" },
@@ -113,8 +113,8 @@ export default function OperatorPage() {
         />
       </section>
 
-      <section id="baseskills" className="scroll-mt-16">
-        <h2 className="text-xl font-semibold mb-2">Base Skills</h2>
+      <section id="aicskills" className="scroll-mt-16">
+        <h2 className="text-xl font-semibold mb-2">AIC Skills</h2>
         <Separator className="mb-4" />
         <OperatorFactorySkills
           spaceshipCharSkillTable={data.spaceshipCharSkillTable}
