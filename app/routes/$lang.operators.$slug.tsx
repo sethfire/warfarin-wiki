@@ -1,4 +1,4 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
+import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
@@ -13,9 +13,8 @@ import OperatorPotentials from "~/components/operators/operator-potentials";
 import OperatorSkills from "~/components/operators/operator-skills";
 import OperatorTalents from "~/components/operators/operator-talents";
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  if (!data) return [];
-  const { lang, data: char }: any = data;
+export function meta({ data }: { data: any }) {
+  const { lang, data: char } = data;
 
   const title = char.summary.name;
   const description = char.itemTable.desc;
