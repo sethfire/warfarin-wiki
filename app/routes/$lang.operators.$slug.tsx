@@ -26,7 +26,7 @@ export function meta({ data }: { data: any }) {
 
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:site_name", content: "Warfarin Wiki" },
+    { property: "og:site_name", content: "Warfarin Archives" },
     { property: "og:image", content: image },
 
     { name: "twitter:card", content: "summary" },

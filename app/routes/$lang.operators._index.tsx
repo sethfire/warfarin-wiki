@@ -5,10 +5,21 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Separator } from "~/components/ui/separator";
 import { SUPPORTED_LANGUAGES } from "~/config/config";
 
-export const meta: MetaFunction = () => {
+export function meta() {
+  const title = "Operators";
+  const description = "";
+
   return [
-    { title: "Operators" },
-    { name: "description", content: "" },
+    { title },
+    { name: "description", content: description },
+
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:site_name", content: "Warfarin Archives" },
+
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
   ];
 };
 
