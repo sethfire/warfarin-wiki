@@ -11,14 +11,15 @@ export default function OperatorTalents(
   const talentNodeMap = charGrowthTable.talentNodeMap;
   if (!talentNodeMap) return null;
 
-  const getUnlockText = (breakStage: number) => {
-    const promotionMap: Record<number, string> = {
-      1: "Promote to E1 to unlock",
-      2: "Promote to E2 to unlock",
-      3: "Promote to E3 to unlock",
+  const getUnlockText = (breakStage: number, level: number) => {
+    const talentUnlockDescription: { [key: number]: { [key: number]: string } } = {
+      1: { 1: "Promote to E1 to unlock", 2: "Promote to E1 activate the upgraded effect" },
+      2: { 1: "Promote to E2 to unlock", 2: "Promote to E2 activate the upgraded effect" },
+      3: { 1: "Promote to E3 to unlock", 2: "Promote to E3 activate the upgraded effect" },
+      4: { 1: "Promote to E4 to unlock", 2: "Promote to E4 activate the upgraded effect" }
     };
-    return promotionMap[breakStage] || `Promotion ${breakStage} required`;
-  }; 
+    return talentUnlockDescription[breakStage]?.[level] ?? "";
+  };
 
   const talents: any[] = [];
   for (const node of Object.values(talentNodeMap) as any[]) {
@@ -68,11 +69,9 @@ export default function OperatorTalents(
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold">
-                    {talent.name}
-                  </h3>
+                  <h3 className="font-semibold">{talent.name}</h3>
                   <div className="text-sm text-muted-foreground">
-                    {getUnlockText(talent.breakStage)}
+                    {getUnlockText(talent.breakStage, talent.level)}
                   </div>
                 </div>
               </div>
