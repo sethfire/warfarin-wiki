@@ -13,10 +13,27 @@ import OperatorPotentials from "~/components/operators/operator-potentials";
 import OperatorSkills from "~/components/operators/operator-skills";
 import OperatorTalents from "~/components/operators/operator-talents";
 
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) return [];
+  const { lang, data: char }: any = data;
+
+  const title = char.summary.name;
+  const description = char.itemTable.desc;
+  const image = `https://ef-assets.closure.wiki/v1/charavatars/icon_${char.characterTable.charId}.png`;
+
   return [
-    { title: "Operators" },
-    { name: "description", content: "" },
+    { title },
+    { name: "description", content: description },
+
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:site_name", content: "Warfarin Wiki" },
+    { property: "og:image", content: image },
+
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
   ];
 };
 
