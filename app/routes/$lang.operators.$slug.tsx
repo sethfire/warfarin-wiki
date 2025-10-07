@@ -104,6 +104,15 @@ export default function OperatorPage() {
         />
       </section>
 
+      <section id="potentials" className="scroll-mt-16">
+        <h2 className="text-xl font-semibold mb-2">Potentials</h2>
+        <Separator className="mb-4" />
+        <OperatorPotentials
+          characterPotentialTable={data.characterPotentialTable}
+          potentialTalentEffectTable={data.potentialTalentEffectTable}
+        />
+      </section>
+
       <section id="skills" className="scroll-mt-16">
         <h2 className="text-xl font-semibold mb-2">Skills</h2>
         <Separator className="mb-4" />
@@ -119,15 +128,6 @@ export default function OperatorPage() {
         <OperatorFactorySkills
           spaceshipCharSkillTable={data.spaceshipCharSkillTable}
           spaceshipSkillTable={data.spaceshipSkillTable}
-        />
-      </section>
-
-      <section id="potentials" className="scroll-mt-16">
-        <h2 className="text-xl font-semibold mb-2">Potentials</h2>
-        <Separator className="mb-4" />
-        <OperatorPotentials
-          characterPotentialTable={data.characterPotentialTable}
-          potentialTalentEffectTable={data.potentialTalentEffectTable}
         />
       </section>
 

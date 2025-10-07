@@ -13,10 +13,10 @@ export default function OperatorTalents(
 
   const getUnlockText = (breakStage: number, level: number) => {
     const talentUnlockDescription: { [key: number]: { [key: number]: string } } = {
-      1: { 1: "Promote to E1 to unlock", 2: "Promote to E1 activate the upgraded effect" },
-      2: { 1: "Promote to E2 to unlock", 2: "Promote to E2 activate the upgraded effect" },
-      3: { 1: "Promote to E3 to unlock", 2: "Promote to E3 activate the upgraded effect" },
-      4: { 1: "Promote to E4 to unlock", 2: "Promote to E4 activate the upgraded effect" }
+      1: { 1: "Promote to E1 to unlock", 2: "Promote to E1 to activate the upgraded effect" },
+      2: { 1: "Promote to E2 to unlock", 2: "Promote to E2 to activate the upgraded effect" },
+      3: { 1: "Promote to E3 to unlock", 2: "Promote to E3 to activate the upgraded effect" },
+      4: { 1: "Promote to E4 to unlock", 2: "Promote to E4 to activate the upgraded effect" }
     };
     return talentUnlockDescription[breakStage]?.[level] ?? "";
   };

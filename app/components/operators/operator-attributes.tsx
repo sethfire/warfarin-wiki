@@ -102,7 +102,7 @@ export default function OperatorAttributes(
             <th className="bg-card p-1 w-1/7">Level 70</th>
             <th className="bg-card p-1 w-1/7">Level 80</th>
           </tr>
-          <tr>
+          {/* <tr>
             <th className="bg-card p-1 w-1/7"></th>
             <th className="bg-card p-1 w-1/7">E0</th>
             <th className="bg-card p-1 w-1/7">E1</th>
@@ -110,7 +110,7 @@ export default function OperatorAttributes(
             <th className="bg-card p-1 w-1/7">E3</th>
             <th className="bg-card p-1 w-1/7">E4</th>
             <th className="bg-card p-1 w-1/7">Max</th>
-          </tr>
+          </tr> */}
         </thead>
         <tbody>
           {statTypes.map((statType, idx) => (
