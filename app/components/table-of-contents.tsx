@@ -14,7 +14,7 @@ export default function TableOfContents({ items }: { items: { id: string; title:
             </h2>
             <ul className="text-sm space-y-2">
               {items.map((item: { id: string; title: string }) => (
-                <li key={item.id} className="pl-2">
+                <li key={item.id} className="pl-1">
                   <Link to={{ hash: `#${item.id}` }} preventScrollReset replace className="hover:text-primary transition-colors">
                     # {item.title}
                   </Link>

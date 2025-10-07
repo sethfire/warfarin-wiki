@@ -1,6 +1,6 @@
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import { Search, Menu, Globe, Moon } from "lucide-react";
+import { Search, Menu, Moon } from "lucide-react";
 
 export default function Header({ lang }: { lang: string }) {
   return (
@@ -26,9 +26,6 @@ export default function Header({ lang }: { lang: string }) {
             />
           </div>
 
-          <Button variant="outline" size="icon">
-            <Globe className="h-5 w-5" />
-          </Button>
           <Button variant="outline" size="icon">
             <Moon className="h-5 w-5" />
           </Button>
