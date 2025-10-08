@@ -1,3 +1,25 @@
+function getCharTypeColor(type: string): string {
+  switch (type) {
+    case 'Cryst': return '#21C6D0CC';
+    case 'Fire': return '#FF623DCC';
+    case 'Natural': return '#9EDC23CC';
+    case 'Physical': return '#888888CC';
+    case 'Pulse': return '#FFC000CC';
+    default: return '#888888CC';
+  }
+}
+
+function getCharTypeIcon(type: string): string {
+  switch (type) {
+    case 'Cryst': return 'icon_charattrtype_cold';
+    case 'Fire': return 'icon_charattrtype_fire';
+    case 'Natural': return 'icon_charattrtype_nature';
+    case 'Physical': return 'icon_charattrtype_physical';
+    case 'Pulse': return 'icon_charattrtype_pulse';
+    default: return 'icon_charattrtype_physical';
+  }
+}
+
 function getCharRarityColor(value: number): string {
   switch (value) {
     case 0: return ""
@@ -26,10 +48,20 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
                 decoding="async"
               />
 
-              <div className="absolute left-[4px] top-[4px] h-[32px] w-[32px] p-0.5 rounded bg-black/70">
+              <div className="absolute left-[4px] top-[4px] h-[28px] w-[28px] p-0.5 rounded bg-black/70">
                 <img 
                   src={`https://ef-assets.closure.wiki/v1/charicons/icon_profession_${char.profession}_s.png`} 
                   className="h-full w-full object-contain" loading="lazy" decoding="async"
+                />
+              </div>
+
+              <div
+                className="absolute left-[38px] top-[4px] h-[28px] w-[28px] p-0.5 rounded"
+                style={{ backgroundColor: getCharTypeColor(char.charTypeId) }}
+              >
+                <img
+                  src={`https://ef-assets.closure.wiki/v1/charattrtype/${getCharTypeIcon(char.charTypeId)}.png`}
+                  className="h-full w-full object-contain scale-125" loading="lazy" decoding="async"
                 />
               </div>
 
