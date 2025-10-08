@@ -1,0 +1,27 @@
+export default {
+  "common.home": "Home",
+  "common.operators": "Operators",
+  "common.weapons": "Weapons",
+  "common.enemies": "Enemies",
+  
+  "common.navigation": "Navigation",
+  "common.language": "Language",
+
+  "char.operator": "Operator",
+  "char.overview": "Overview",
+  "char.attributes": "Attributes",
+  "char.talents": "Talents",
+  "char.skills": "Skills",
+  "char.aicSkills": "AIC Skills",
+  "char.potentials": "Potentials",
+  "char.files": "Files",
+  "char.dialogue": "Dialogue",
+
+  "char.name": "Name",
+  "char.internalName": "Internal Name",
+  "char.desc": "Description",
+  "char.rarity": "Rarity",
+  "char.class": "Class",
+  "char.weapon": "Weapon",
+  "char.element": "Element",
+} as const;

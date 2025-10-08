@@ -1,17 +1,7 @@
 {
-  "name": "warfarin-wiki-remix",
-  "description": "Build a full-stack web application with Remix.",
+  "name": "warfarin-wiki",
+  "description": "Warfarin Archive",
   "private": true,
-  "cloudflare": {
-    "label": "Remix Framework Starter",
-    "products": [
-      "Workers"
-    ],
-    "categories": [],
-    "preview_icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/d34bec43-c621-4a33-0f4c-e72ae7927400/public",
-    "preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/d30ce022-758a-431e-6de1-3ac63504e100/preview",
-    "publish": true
-  },
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-select": "^2.2.6",

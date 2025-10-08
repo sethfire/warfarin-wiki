@@ -3,6 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 import OperatorList from "~/components/operators/operator-list";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
+import { i18n } from "~/i18n";
 import { fetchEntries } from "~/lib/fetch-utils";
 
 export function meta() {
@@ -36,17 +37,19 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 export default function OperatorPage() {
   const { lang, data }: any = useLoaderData<typeof loader>();
+  const t = i18n(lang);
+
   return (
     <div className="flex flex-col gap-4 mb-8">
       <div>
         <Breadcrumb className="mb-2">
           <BreadcrumbList>
-            <BreadcrumbItem><BreadcrumbLink href={`/${lang}`}>Home</BreadcrumbLink></BreadcrumbItem>
+            <BreadcrumbItem><BreadcrumbLink href={`/${lang}`}>{t("common.home")}</BreadcrumbLink></BreadcrumbItem>
             <BreadcrumbSeparator>/</BreadcrumbSeparator>
-            <BreadcrumbItem><BreadcrumbPage>Operators</BreadcrumbPage></BreadcrumbItem>
+            <BreadcrumbItem><BreadcrumbPage>{t("common.operators")}</BreadcrumbPage></BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className="text-2xl font-semibold mb-2">Operators</h1>
+        <h1 className="text-2xl font-semibold mb-2">{t("common.operators")}</h1>
         <div className="mb-4 text-sm">
           <span className="text-muted-foreground">Showing </span>
           {data.length}
