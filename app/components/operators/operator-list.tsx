@@ -35,7 +35,7 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
 
               <div className="absolute left-0 right-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(0,0,0,0.7)] to-transparent"></div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-2 text-left font-semibold text-white">
+              <div className="absolute bottom-0 left-0 right-0 p-2 text-left font-semibold text-white text-sm md:text-base">
                 <span style={{
                   textShadow: '-1px 0 0 #000,1px 0 0 #000,0 -1px 0 #000,0 1px 0 #000,-1px -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000'
                 }}>{char.name}</span>

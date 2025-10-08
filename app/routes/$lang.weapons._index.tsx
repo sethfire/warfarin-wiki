@@ -1,12 +1,12 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
-import OperatorList from "~/components/operators/operator-list";
+import WeaponList from "~/components/weapons/weapon-list";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { fetchEntries } from "~/lib/fetch-utils";
 
 export function meta() {
-  const title = "Operators";
+  const title = "Weapons";
   const description = "";
 
   return [
@@ -29,12 +29,12 @@ export const handle = {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { lang } = params;
-  const data = await fetchEntries(lang!, "operators");
+  const data = await fetchEntries(lang!, "weapons");
   if (!data) throw new Response("", { status: 404 });
   return { lang, data };
 }
 
-export default function OperatorPage() {
+export default function WeaponsPage() {
   const { lang, data }: any = useLoaderData<typeof loader>();
   return (
     <div className="flex flex-col gap-4 mb-8">
@@ -43,18 +43,18 @@ export default function OperatorPage() {
           <BreadcrumbList>
             <BreadcrumbItem><BreadcrumbLink href={`/${lang}`}>Home</BreadcrumbLink></BreadcrumbItem>
             <BreadcrumbSeparator>/</BreadcrumbSeparator>
-            <BreadcrumbItem><BreadcrumbPage>Operators</BreadcrumbPage></BreadcrumbItem>
+            <BreadcrumbItem><BreadcrumbPage>Weapons</BreadcrumbPage></BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className="text-2xl font-semibold mb-2">Operators</h1>
+        <h1 className="text-2xl font-semibold mb-2">Weapons</h1>
         <div className="mb-4 text-sm">
           <span className="text-muted-foreground">Showing </span>
           {data.length}
-          <span className="text-muted-foreground"> operators</span>
+          <span className="text-muted-foreground"> weapons</span>
         </div>
         <Separator />
       </div>
-      <OperatorList lang={lang} data={data} />
+      <WeaponList lang={lang} data={data} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import { Search, Menu, Moon } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 export default function Header({ lang }: { lang: string }) {
   return (
@@ -10,9 +11,8 @@ export default function Header({ lang }: { lang: string }) {
           <img
             src="/castle3.png"
             className="h-8 w-8 object-contain"
-            alt="Warfarin Archives"
           />
-          <span className="font-semibold text-lg">Warfarin Archives</span>
+          <span className="font-semibold text-lg">Warfarin Archive</span>
         </a>
 
         <div className="hidden sm:flex items-center gap-2">
@@ -35,6 +35,7 @@ export default function Header({ lang }: { lang: string }) {
           <Menu className="h-5 w-5" />
         </Button>
       </div>
+      {/* <Separator /> */}
     </header>
   );
 }

@@ -12,6 +12,7 @@ import OperatorOverview from "~/components/operators/operator-overview";
 import OperatorPotentials from "~/components/operators/operator-potentials";
 import OperatorSkills from "~/components/operators/operator-skills";
 import OperatorTalents from "~/components/operators/operator-talents";
+import { fetchEntry } from "~/lib/fetch-utils";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: char } = data;
@@ -26,7 +27,7 @@ export function meta({ data }: { data: any }) {
 
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:site_name", content: "Warfarin Archives" },
+    { property: "og:site_name", content: "Warfarin Archive" },
     { property: "og:image", content: image },
 
     { name: "twitter:card", content: "summary" },
@@ -51,15 +52,15 @@ export const handle = {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { lang, slug } = params;
-  const response = await fetch(`https://api.warfarin.wiki/v1/${lang}/operators/${slug}`);
-  if (!response.ok) throw new Response("", { status: 404 });
-  return { lang, data : await response.json() };
+  const data = await fetchEntry(lang!, "operators", slug!);
+  if (!data) throw new Response("", { status: 404 });
+  return { lang, data };
 }
 
 export default function OperatorPage() {
   const { lang, data }: any = useLoaderData<typeof loader>();
   return (
-    <main className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 mb-8">
       <section id="summary" className="scroll-mt-16">
         <Breadcrumb className="mb-2">
           <BreadcrumbList>
@@ -142,6 +143,6 @@ export default function OperatorPage() {
         <Separator className="mb-4" />
         <OperatorDialogue profileVoice={data.characterTable.profileVoice} />
       </section>
-    </main>
+    </div>
   );
 }

@@ -2,7 +2,6 @@ import { Outlet, useMatches, useParams } from "@remix-run/react";
 import AppSidebar from "~/components/app-sidebar";
 import TableOfContents from "~/components/table-of-contents";
 import Header from "~/components/header";
-import Footer from "~/components/footer";
 
 export default function OperatorsLayout() {
   const { lang } = useParams();
@@ -20,7 +19,6 @@ export default function OperatorsLayout() {
           <AppSidebar lang={lang} />
           <div className="flex-1 min-w-0 max-w-5xl flex flex-col gap-4 px-4 xl:px-0">
             <Outlet />
-            {/* <Footer lang={lang} /> */}
           </div>
           <TableOfContents items={tocItems} />
         </div>
