@@ -15,7 +15,7 @@ export function meta() {
 
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:site_name", content: "Warfarin Archive" },
+    { property: "og:site_name", content: "Warfarin Wiki" },
 
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: title },

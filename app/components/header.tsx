@@ -12,7 +12,7 @@ export default function Header({ lang }: { lang: string }) {
             src="/castle3.png"
             className="h-8 w-8 object-contain"
           />
-          <span className="font-semibold text-lg">Warfarin Archive</span>
+          <span className="font-semibold text-lg">Warfarin Wiki</span>
         </a>
 
         <div className="hidden sm:flex items-center gap-2">
