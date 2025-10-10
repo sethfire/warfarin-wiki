@@ -10,7 +10,7 @@ export function meta({ data }: { data: any }) {
 
   const title = item.summary.name || "Unnamed Item";
   const description = item.itemTable.decoDesc || "No description available.";
-  const image = `https://ef-assets.closure.wiki/v1/itemicon/${item.summary.id}.png`;
+  const image = `https://ef-assets.closure.wiki/v1/itemicon/${item.itemTable.iconId}.png`;
 
   return [
     { title },
