@@ -20,7 +20,6 @@ export default function OperatorsLayout() {
           <AppSidebar lang={lang} />
           <div className="flex-1 min-w-0 max-w-5xl flex flex-col gap-4 px-4 xl:px-0">
             <Outlet />
-            {/* <Footer lang={lang} /> */}
           </div>
           <TableOfContents items={tocItems} />
         </div>

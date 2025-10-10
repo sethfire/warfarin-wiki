@@ -1,0 +1,44 @@
+function getItemRarityColor(value: number): string {
+  switch (value) {
+    case 0: return "#A0A0A0"
+    case 1: return "#A0A0A0";
+    case 2: return "#DCDC00";
+    case 3: return "#26BBFD";
+    case 4: return "#9452FA";
+    case 5: return "#FFBB03";
+    case 6: return "#FE5A00";
+    default: return "#A0A0A0";
+  }
+}
+
+export default function ItemList({ lang, data }: { lang: string; data: any[] }) {
+  const items = [...data].sort((a, b) => a.type - b.type);
+  return (
+    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      {items.map((item: any) => (
+        <a href={`/${lang}/items/${item.slug}`} key={item.id}>
+          <div className="group relative aspect-square bg-muted dark:bg-card rounded overflow-hidden">
+            <img
+              src={`https://ef-assets.closure.wiki/v1/itemicon/${item.iconId}.png`}
+              className="w-full h-full object-contain absolute inset-0"
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div className="absolute left-0 right-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(0,0,0,0.7)] to-transparent"></div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-2 text-left font-semibold text-white text-xs md:text-sm">
+              <span style={{
+                textShadow: '-1px 0 0 #000,1px 0 0 #000,0 -1px 0 #000,0 1px 0 #000,-1px -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000'
+              }}>{item.name || "Unnamed Item"}</span>
+              <br />
+              <span className="text-muted-foreground">{item.typeName}</span>
+            </div>
+
+            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: getItemRarityColor(item.rarity) }}></div>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+}

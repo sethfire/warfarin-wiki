@@ -1,5 +1,5 @@
 const SUPPORTED_LANGS = ["en", "cn", "jp", "kr", "tc"];
-const SUPPORTED_TYPES = ["operators", "weapons", "enemies"];
+const SUPPORTED_TYPES = ["operators", "weapons", "enemies", "items"];
 
 const API_URL = "https://api.warfarin.wiki";
 const API_VERSION = "v1";

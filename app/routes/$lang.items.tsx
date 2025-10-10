@@ -4,7 +4,7 @@ import TableOfContents from "~/components/table-of-contents";
 import Header from "~/components/header";
 import Footer from "~/components/footer";
 
-export default function OperatorsLayout() {
+export default function ItemsLayout() {
   const { lang } = useParams();
   if (!lang) throw new Response("", { status: 404 });
 
