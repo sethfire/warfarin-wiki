@@ -1,4 +1,5 @@
 import { parseValues } from "~/lib/blackboard-parser";
+import { getSkillIcon } from "~/lib/image-utils";
 import { replaceTags } from "~/lib/tag-definitions";
 
 export default function OperatorSkills(
@@ -89,7 +90,10 @@ export default function OperatorSkills(
                 <td colSpan={13} className="p-2">
                   <div className="flex items-center gap-4">
                     <div className={`rounded-sm bg-muted`}>
-                      <img src={`https://ef-assets.closure.wiki/v1/skillicon/${skillGroup.icon}.png`} className="w-12 h-12" loading="lazy" decoding="async" />
+                      <img 
+                        src={getSkillIcon(skillGroup.icon)}
+                        className="w-12 h-12" loading="lazy" decoding="async"
+                      />
                     </div>
                     <div>
                       <h3 className="font-semibold">{skillGroup.name}</h3>

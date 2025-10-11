@@ -14,13 +14,14 @@ import OperatorPotentials from "~/components/operators/operator-potentials";
 import OperatorSkills from "~/components/operators/operator-skills";
 import OperatorTalents from "~/components/operators/operator-talents";
 import { fetchEntry } from "~/lib/fetch-utils";
+import { getCharSquareIcon } from "~/lib/image-utils";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: char } = data;
 
   const title = char.summary.name;
   const description = char.itemTable.desc;
-  const image = `https://ef-assets.closure.wiki/v1/charavatars/icon_${char.characterTable.charId}.png`;
+  const image = getCharSquareIcon(char.characterTable.charId);
 
   return [
     { title },

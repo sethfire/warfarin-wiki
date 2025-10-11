@@ -1,3 +1,5 @@
+import { getItemIcon } from "~/lib/image-utils";
+
 function getItemRarityColor(value: number): string {
   switch (value) {
     case 0: return "#A0A0A0"
@@ -18,12 +20,12 @@ export default function ItemList({ lang, data }: { lang: string; data: any[] }) 
       {items.map((item: any) => (
         <a href={`/${lang}/items/${item.slug}`} key={item.id}>
           <div className="group relative aspect-square bg-muted dark:bg-card rounded overflow-hidden">
-            <img
-              src={`https://ef-assets.closure.wiki/v1/itemicon/${item.iconId}.png`}
+            {item.iconId && <img
+              src={getItemIcon(item.iconId)}
               className="w-full h-full object-contain absolute inset-0"
               loading="lazy"
               decoding="async"
-            />
+            />}
 
             <div className="absolute left-0 right-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(0,0,0,0.7)] to-transparent"></div>
 

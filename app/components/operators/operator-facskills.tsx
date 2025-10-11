@@ -1,3 +1,4 @@
+import { getBaseSkillIcon } from "~/lib/image-utils";
 import { replaceTags } from "~/lib/tag-definitions";
 
 export default function OperatorFactorySkills({ spaceshipCharSkillTable, spaceshipSkillTable }: { spaceshipCharSkillTable: any, spaceshipSkillTable: any }) {
@@ -13,7 +14,10 @@ export default function OperatorFactorySkills({ spaceshipCharSkillTable, spacesh
           <div className="bg-muted dark:bg-card p-2" key={skillId}>
             <div className="flex items-center gap-4 mb-2">
               <div className="bg-muted rounded-sm">
-                <img src={`https://ef-assets.closure.wiki/v1/spaceshipskillicon/${skillData.icon}.png`} className="w-12 h-12" loading="lazy" decoding="async" />
+                <img 
+                  src={getBaseSkillIcon(skillData.icon)}
+                  className="w-12 h-12" loading="lazy" decoding="async"
+                  />
               </div>
               <div>
                 <h3 className="font-semibold">{skillData.name}</h3>

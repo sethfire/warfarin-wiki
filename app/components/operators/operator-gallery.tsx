@@ -1,11 +1,13 @@
 import CarouselGallery from "~/components/carousel-gallery";
+import { getCharSplash, getCharSquareIcon } from "~/lib/image-utils";
 
 export default function OperatorGallery({ charId }: { charId: string }) {
   if (!charId) return null;
 
   const charArts = [{
-    src: `https://ef-assets.closure.wiki/v1/characters/${charId}.png`,
-    thumb: `https://ef-assets.closure.wiki/v1/charavatars/icon_${charId}.png`,
+    src: getCharSplash(charId),
+    thumb: getCharSquareIcon(charId),
+    download: `https://assets.warfarin.wiki/v1/charsplash/${charId}.png`,
     title: "",
     desc: "",
     display: "object-cover",
@@ -13,8 +15,9 @@ export default function OperatorGallery({ charId }: { charId: string }) {
 
   if (charId === "chr_0003_endminf") {
     charArts.push({
-      src: `https://ef-assets.closure.wiki/v1/characters/chr_0002_endminm.png`,
-      thumb: `https://ef-assets.closure.wiki/v1/charavatars/icon_chr_0002_endminm.png`,
+      src: getCharSplash("chr_0002_endminm"),
+      thumb: getCharSquareIcon("chr_0002_endminm"),
+      download: `https://assets.warfarin.wiki/v1/charsplash/chr_0002_endminm.png`,
       title: "",
       desc: "",
       display: "object-cover",

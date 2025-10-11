@@ -1,3 +1,5 @@
+import { getCharElementIcon, getCharIcon, getClassIcon } from "~/lib/image-utils";
+
 function getCharTypeColor(type: string): string {
   switch (type) {
     case 'Cryst': return '#21C6D0CC';
@@ -9,7 +11,7 @@ function getCharTypeColor(type: string): string {
   }
 }
 
-function getCharTypeIcon(type: string): string {
+function getCharElementIconId(type: string): string {
   switch (type) {
     case 'Cryst': return 'icon_charattrtype_cold';
     case 'Fire': return 'icon_charattrtype_fire';
@@ -35,6 +37,7 @@ function getCharRarityColor(value: number): string {
 
 export default function OperatorList({ lang, data }: { lang: string; data: any[] }) {
   const chars = [...data].sort((a, b) => b.rarity - a.rarity);
+
   return (
     <div>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -42,7 +45,7 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
           <a href={`/${lang}/operators/${char.slug}`} key={char.id}>
             <div className="group relative aspect-[152/212] bg-muted dark:bg-card rounded overflow-hidden">
               <img
-                src={`https://ef-assets.closure.wiki/v1/charportraits/icon_${char.id}.png`}
+                src={getCharIcon(char.id)}
                 className="w-full h-full object-contain absolute inset-0 transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
                 decoding="async"
@@ -50,7 +53,7 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
 
               <div className="absolute left-[4px] top-[4px] h-[28px] w-[28px] p-0.5 rounded bg-black/70">
                 <img 
-                  src={`https://ef-assets.closure.wiki/v1/charicons/icon_profession_${char.profession}_s.png`} 
+                  src={getClassIcon(char.profession)}
                   className="h-full w-full object-contain" loading="lazy" decoding="async"
                 />
               </div>
@@ -60,7 +63,7 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
                 style={{ backgroundColor: getCharTypeColor(char.charTypeId) }}
               >
                 <img
-                  src={`https://ef-assets.closure.wiki/v1/charattrtype/${getCharTypeIcon(char.charTypeId)}.png`}
+                  src={getCharElementIcon(getCharElementIconId(char.charTypeId))}
                   className="h-full w-full object-contain scale-125" loading="lazy" decoding="async"
                 />
               </div>

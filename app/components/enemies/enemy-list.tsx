@@ -1,3 +1,5 @@
+import { getEnemyIcon } from "../../lib/image-utils";
+
 const enemyRarityColors: Record<number, string> = {
   0: '#26BBFD',  // Common
   3: '#9452FA',  // Elite
@@ -5,22 +7,7 @@ const enemyRarityColors: Record<number, string> = {
   2: '#FE5A00',  // Boss
 };
 
-const enemyRarityNames: Record<number, string> = {
-  0: 'Common',
-  3: 'Elite',
-  1: 'Advanced',
-  2: 'Boss',
-};
-
-const enemyRarityNames2: Record<number, string> = {
-  0: '★★★',
-  3: '★★★★',
-  1: '★★★★★',
-  2: '★★★★★★',
-};
-
 export default function EnemyList({ lang, data }: { lang: string; data: any[] }) {
-
   const displayTypeOrder = [2, 1, 3, 0];
   const enemies = [...data]
     .filter((enemy: any) => enemy.id !== "eny_0057_dog")
@@ -34,7 +21,7 @@ export default function EnemyList({ lang, data }: { lang: string; data: any[] })
         <a href={`/${lang}/enemies/${enemy.slug}`} key={enemy.id}>
           <div className="group relative aspect-square bg-muted dark:bg-card rounded overflow-hidden">
             <img
-              src={`https://ef-assets.closure.wiki/v1/monstericon/${enemy.id}.png`}
+              src={getEnemyIcon(enemy.id)}
               className="w-full h-full object-contain absolute inset-0"
               loading="lazy"
               decoding="async"
@@ -47,9 +34,6 @@ export default function EnemyList({ lang, data }: { lang: string; data: any[] })
                 textShadow: '-1px 0 0 #000,1px 0 0 #000,0 -1px 0 #000,0 1px 0 #000,-1px -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000'
               }}>{enemy.name}</span>
               <br />
-              {/* <span style={{ color: enemyRarityColors[enemy.displayType] }}>
-                {enemyRarityNames[enemy.displayType]}
-              </span> */}
             </div>
 
             <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: enemyRarityColors[enemy.displayType] }}></div>

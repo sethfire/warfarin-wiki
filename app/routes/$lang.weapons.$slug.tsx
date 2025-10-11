@@ -4,13 +4,14 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Separator } from "~/components/ui/separator";
 
 import { fetchEntry } from "~/lib/fetch-utils";
+import { getItemIcon } from "~/lib/image-utils";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: char } = data;
 
   const title = char.summary.name;
   const description = char.itemTable.decoDesc;
-  // const image = `https://ef-assets.closure.wiki/v1/charavatars/icon_${char.characterTable.charId}.png`;
+  const image = getItemIcon(char.itemTable.iconId);
 
   return [
     { title },
@@ -19,12 +20,12 @@ export function meta({ data }: { data: any }) {
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:site_name", content: "Warfarin Wiki" },
-    // { property: "og:image", content: image },
+    { property: "og:image", content: image },
 
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
-    // { name: "twitter:image", content: image },
+    { name: "twitter:image", content: image },
   ];
 };
 
@@ -55,8 +56,6 @@ export default function WeaponPage() {
       </section>
 
       <section id="overview" className="scroll-mt-16">
-        {/* <h2 className="text-xl font-semibold mb-2">Overview</h2>
-        <Separator className="mb-4" /> */}
         <div className="whitespace-pre-line" dangerouslySetInnerHTML={{ __html: data.weaponBasicTable.weaponDesc }}></div>
       </section>
     </div>

@@ -1,4 +1,5 @@
 import { parseValueMatrix } from "~/lib/blackboard-parser";
+import { getSkillIcon } from "~/lib/image-utils";
 import { replaceTags } from "~/lib/tag-definitions";
 
 export default function OperatorTalents(
@@ -61,8 +62,7 @@ export default function OperatorTalents(
               <div className="flex items-start gap-4 mb-2">
                 <div className="bg-muted rounded-sm overflow-hidden shrink-0">
                   <img
-                    src={`https://ef-assets.closure.wiki/v1/skillicon/${talent.iconId}.png`}
-                    alt={talent.name}
+                    src={getSkillIcon(talent.iconId)}
                     className="w-12 h-12 object-cover"
                     loading="lazy" 
                     decoding="async"

@@ -1,15 +1,4 @@
-function getClassIcon(profession: string): string {
-  return `https://ef-assets.closure.wiki/v1/charicons/icon_profession_${profession}_s.png`;
-}
-
-function getAttributeIcon(attrId: number) {
-  switch (attrId) {
-    case 39: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_str.png";
-    case 40: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_agi.png";
-    case 41: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_wisd.png";
-    case 42: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_will.png";
-  }
-}
+import { getAttributeIcon, getCharElementIcon, getClassIcon } from "~/lib/image-utils";
 
 function getAttributeType(attrId: number) {
   switch (attrId) {
@@ -79,7 +68,10 @@ export default function OperatorOverview(
           <td className="border-t px-2 py-1 text-center">
               <span className="flex items-center justify-center gap-1">
                   <div className={`rounded-sm`} style={{ backgroundColor: `#${charTypeTable.color}` }}>
-                    <img src={`https://ef-assets.closure.wiki/v1/charattrtype/${charTypeTable.icon}.png`} className="w-5 h-5 object-contain scale-125" loading="lazy" decoding="async" />
+                    <img 
+                      src={getCharElementIcon(charTypeTable.icon)} 
+                      className="w-5 h-5 object-contain scale-125" loading="lazy" decoding="async" 
+                    />
                   </div>
                 {charTypeTable.name}
               </span>
@@ -96,14 +88,14 @@ export default function OperatorOverview(
           <th className="bg-card p-1 text-center">Main Attribute</th>
           <td className="border-t px-2 py-1 text-center">
               <span className="flex items-center justify-center gap-1">
-                <img src={getAttributeIcon(characterTable.mainAttrType)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" />
+                {/* <img src={getAttributeIcon(characterTable.mainAttrType)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" /> */}
                 {getAttributeType(characterTable.mainAttrType)}
               </span>
             </td>
           <th className="bg-card p-1 text-center">Secondary Attribute</th>
           <td className="border-t px-2 py-1 text-center">
               <span className="flex items-center justify-center gap-1">
-                <img src={getAttributeIcon(characterTable.subAttrType)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" />
+                {/* <img src={getAttributeIcon(characterTable.subAttrType)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" /> */}
                 {getAttributeType(characterTable.subAttrType)}
               </span>
             </td>

@@ -1,14 +1,4 @@
-function getAttributeIcon(attrId: number) {
-  switch (attrId) {
-    case 1: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_maxHp.png";
-    case 2: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_atk.png";
-    case 3: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_def.png";
-    case 39: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_str.png";
-    case 40: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_agi.png";
-    case 41: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_wisd.png";
-    case 42: return "https://ef-assets.closure.wiki/v1/attributeicon/icon_attribute_will.png";
-  }
-}
+import { getAttributeIcon } from "~/lib/image-utils";
 
 function getAttributeName(attrId: number) {
   switch (attrId) {
@@ -117,7 +107,7 @@ export default function OperatorAttributes(
             <tr key={statType}>
               <th className="bg-card p-1 w-1/7">
                 <div className="flex items-center justify-center gap-1">
-                  <img src={getAttributeIcon(statType)} className="w-5 h-5" loading="lazy" decoding="async" />
+                  {/* <img src={getAttributeIcon(statType)} className="w-5 h-5" loading="lazy" decoding="async" /> */}
                   {getAttributeName(statType)}
                 </div>
               </th>

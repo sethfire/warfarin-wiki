@@ -1,3 +1,5 @@
+import { getItemIcon } from "~/lib/image-utils";
+
 function getWeaponRarityColor(value: number): string {
   switch (value) {
     case 0: return ""
@@ -19,18 +21,11 @@ export default function WeaponList({ lang, data }: { lang: string; data: any[] }
         <a href={`/${lang}/weapons/${weapon.slug}`} key={weapon.id}>
           <div className="group relative aspect-square bg-muted dark:bg-card rounded overflow-hidden">
             <img
-              src={`https://ef-assets.closure.wiki/v1/itemicon/${weapon.id}.png`}
+              src={getItemIcon(weapon.id)}
               className="w-full h-full object-contain absolute inset-0"
               loading="lazy"
               decoding="async"
             />
-
-            {/* <div className="absolute left-[4px] top-[4px] h-[32px] w-[32px] p-0.5 rounded bg-black/70">
-              <img
-                src={`https://ef-assets.closure.wiki/v1/charicons/icon_profession_${weapon.weaponType}_s.png`}
-                className="h-full w-full object-contain" loading="lazy" decoding="async"
-              />
-            </div> */}
 
             <div className="absolute left-0 right-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgba(0,0,0,0.7)] to-transparent"></div>
 

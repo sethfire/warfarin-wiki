@@ -4,13 +4,14 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Separator } from "~/components/ui/separator";
 
 import { fetchEntry } from "~/lib/fetch-utils";
+import { getItemIcon } from "~/lib/image-utils";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: item } = data;
 
   const title = item.summary.name || "Unnamed Item";
   const description = item.itemTable.decoDesc || "No description available.";
-  const image = `https://ef-assets.closure.wiki/v1/itemicon/${item.itemTable.iconId}.png`;
+  const image = getItemIcon(item.itemTable.iconId);
 
   return [
     { title },
@@ -62,9 +63,8 @@ export default function ItemPage() {
             <div className="flex items-start gap-4">
               {data.itemTable.iconId && (
                 <img
-                  src={`https://ef-assets.closure.wiki/v1/itemicon/${data.itemTable.iconId}.png`}
+                  src={getItemIcon(data.itemTable.iconId)}
                   className="w-32 h-32 object-contain flex-shrink-0 bg-card rounded"
-                  alt="Item icon"
                 />
               )}
               <div className="flex-1">
