@@ -56,6 +56,29 @@ export default function WeaponPage() {
       </section>
 
       <section id="overview" className="scroll-mt-16">
+        <div className="flex items-start gap-4">
+          {data.itemTable.iconId && (
+            <img
+              src={getItemIcon(data.itemTable.iconId)}
+              className="w-32 h-32 object-contain flex-shrink-0 bg-card rounded"
+            />
+          )}
+          <div className="flex-1">
+            {(!data.itemTable.desc && !data.itemTable.decoDesc) ? (
+              <div className="text-muted-foreground italic">No description available.</div>
+            ) : (
+              <>
+                <div className="whitespace-pre-line mb-4" dangerouslySetInnerHTML={{ __html: data.itemTable.desc }}></div>
+                <div className="whitespace-pre-line" dangerouslySetInnerHTML={{ __html: data.itemTable.decoDesc }}></div>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section id="description" className="scroll-mt-16">
+        <h2 className="text-xl font-semibold mb-2">Description</h2>
+        <Separator className="mb-4" />
         <div className="whitespace-pre-line" dangerouslySetInnerHTML={{ __html: data.weaponBasicTable.weaponDesc }}></div>
       </section>
     </div>

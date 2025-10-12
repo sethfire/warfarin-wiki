@@ -6,12 +6,19 @@ import { Separator } from "~/components/ui/separator";
 import { fetchEntry } from "~/lib/fetch-utils";
 import { getEnemyIcon } from "~/lib/image-utils";
 
-export function meta({ data }: { data: any }) {
-  const { lang, data: char } = data;
+const enemyType: Record<number, string> = {
+  0: 'Common',
+  1: 'Advanced',
+  2: 'Boss',
+  3: 'Elite',
+};
 
-  const title = char.summary.name;
-  const description = char.enemyTemplateDisplayInfoTable.description;
-  const image = getEnemyIcon(char.summary.id);
+export function meta({ data }: { data: any }) {
+  const { lang, data: enemy } = data;
+
+  const title = enemy.summary.name;
+  const description = enemy.enemyTemplateDisplayInfoTable.description;
+  const image = getEnemyIcon(enemy.summary.id);
 
   return [
     { title },
@@ -51,12 +58,22 @@ export default function EnemyPage() {
           </BreadcrumbList>
         </Breadcrumb>
         <h1 className="text-2xl font-semibold mb-2">{data.summary.name}</h1>
-        <div className="text-sm text-muted-foreground mb-4">Enemy</div>
+        <div className="text-sm text-muted-foreground mb-4">{enemyType[data.enemyTemplateDisplayInfoTable.displayType]} Enemy</div>
         <Separator />
       </section>
 
       <section id="overview" className="scroll-mt-16">
-        <div className="whitespace-pre-line" dangerouslySetInnerHTML={{ __html: data.enemyTemplateDisplayInfoTable.description }} />
+        <div className="flex items-start gap-4">
+          <img
+            src={getEnemyIcon(data.summary.id)}
+            className="w-32 h-32 object-contain flex-shrink-0 bg-card rounded"
+          />
+          {(!data.enemyTemplateDisplayInfoTable.description) ? (
+            <div className="text-muted-foreground italic">No description available.</div>
+          ) : (
+            <div className="whitespace-pre-line" dangerouslySetInnerHTML={{ __html: data.enemyTemplateDisplayInfoTable.description }} />
+          )}
+        </div>
       </section>
 
       <section id="abilities" className="scroll-mt-16">
