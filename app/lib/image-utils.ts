@@ -1,3 +1,6 @@
+const ASSET_CDN_URL = "https://assets.warfarin.wiki";
+const ASSET_CDN_VERSION = "v1";
+
 const STATIC_CDN_URL = "https://static.warfarin.wiki";
 const STATIC_CDN_VERSION = "v1";
 
@@ -21,8 +24,9 @@ export function getCharElementIcon(id: string): string {
   return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/elementicon/${id}.webp`;
 }
 
-export function getSkillIcon(id: string): string {
-  return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/skillicon/${id}.webp`;
+export function getSkillIcon(id: string, original: boolean = false): string {
+  if (original) return `${ASSET_CDN_URL}/${ASSET_CDN_VERSION}/skillicon/${id}.png`;
+  else return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/skillicon/${id}.webp`;
 }
 
 export function getBaseSkillIcon(id: string): string {
@@ -49,4 +53,12 @@ export function getEnemyIcon(id: string): string {
 export function getItemIcon(id: string): string {
   // if (!id) return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/itemicon/.webp`;
   return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/itemicon/${id}.webp`;
+}
+
+export function getTutorialImage(id: string): string {
+  return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/guide/${id}.webp`;
+}
+
+export function getLoreImage(id: string): string {
+  return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/reading/${id}.webp`;
 }

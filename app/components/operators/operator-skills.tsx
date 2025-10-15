@@ -57,15 +57,7 @@ export default function OperatorSkills(
       });
     }
 
-    skills.push({
-      name,
-      icon,
-      desc,
-      id,
-      type,
-      blackboard,
-      skillData,
-    });
+    skills.push({ name, icon, desc, id, type, blackboard, skillData });
   });
 
   const sortOrder = [0, 1, 3, 2];
@@ -89,11 +81,12 @@ export default function OperatorSkills(
               <tr>
                 <td colSpan={13} className="p-2">
                   <div className="flex items-center gap-4">
-                    <div className={`rounded-sm bg-muted`}>
-                      <img 
-                        src={getSkillIcon(skillGroup.icon)}
-                        className="w-12 h-12" loading="lazy" decoding="async"
-                      />
+                    <div className="rounded-sm bg-muted">
+                      <a href={getSkillIcon(skillGroup.icon, true)}
+                        target="_blank" rel="noopener noreferrer">
+                        <img src={getSkillIcon(skillGroup.icon)}
+                          className="w-12 h-12" loading="lazy" decoding="async" />
+                      </a>
                     </div>
                     <div>
                       <h3 className="font-semibold">{skillGroup.name}</h3>
