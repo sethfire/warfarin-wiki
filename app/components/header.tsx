@@ -1,41 +1,76 @@
-import { Input } from "~/components/ui/input";
+import { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Search, Menu, Moon } from "lucide-react";
-import { Separator } from "./ui/separator";
+import { Menu, X } from "lucide-react";
 
-export default function Header({ lang }: { lang: string }) {
+export default function Header({ lang = "en" }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+};
+
+  const navItems = [
+    { label: "Home", href: `/${lang}` },
+    { label: "Operators", href: `/${lang}/operators` },
+    { label: "Weapons", href: `/${lang}/weapons` },
+    { label: "Enemies", href: `/${lang}/enemies` },
+    { label: "Items", href: `/${lang}/items` },
+    { label: "Tutorials", href: `/${lang}/tutorials` },
+    { label: "Lore", href: `/${lang}/lore` },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 bg-background h-16">
-      <div className="max-w-[1536px] mx-auto flex h-full items-center justify-between px-4 xl:pr-64">
-        <a href={`/${lang}`} className="flex items-center gap-2">
-          <img
-            src="/castle3.png"
-            className="h-8 w-8 object-contain"
-          />
-          <span className="font-semibold text-lg">Warfarin Wiki</span>
-        </a>
-
-        <div className="hidden sm:flex items-center gap-2">
-          <div className="relative w-64">
-            <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search..."
-              className="pl-8 w-full"
-              disabled
+    <>
+      <header className="sticky top-0 z-50 bg-background h-16">
+        <div className="max-w-[1536px] mx-auto flex h-full items-center justify-between px-4 xl:pr-64">
+          <a href={`/${lang}`} className="flex items-center gap-2">
+            <img
+              src="/castle3.png"
+              className="h-8 w-8 rounded object-contain"
             />
-          </div>
+            <span className="font-semibold text-lg">Warfarin Wiki</span>
+          </a>
 
-          <Button variant="outline" size="icon">
-            <Moon className="h-5 w-5" />
+          <Button
+            variant="outline"
+            className="lg:hidden cursor-pointer"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X /> : <Menu />}
           </Button>
         </div>
+      </header>
 
-        <Button variant="outline" className="sm:hidden p-2">
-          <Menu className="h-5 w-5" />
-        </Button>
-      </div>
-      {/* <Separator /> */}
-    </header>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-background/50 z-40 lg:hidden"
+          onClick={toggleMenu}
+          aria-hidden="true"
+        />
+      )}
+
+      <nav
+        className={`fixed top-16 left-0 right-0 w-full bg-background z-50 lg:hidden ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
+        <div className="flex flex-col p-6 pt-0 gap-4">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-lg hover:text-blue-600"
+              onClick={toggleMenu}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </>
   );
 }
