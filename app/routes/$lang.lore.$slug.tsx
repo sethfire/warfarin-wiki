@@ -2,20 +2,25 @@ import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
+import { SITE_NAME } from "~/config/site-config";
 import { fetchEntry } from "~/lib/fetch-utils";
 import { getLoreImage } from "~/lib/image-utils";
 import { replaceTags } from "~/lib/tag-utils";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: item } = data;
+
   const title = item.summary.name;
   const description = "";
+
   return [
     { title },
     { name: "description", content: description },
+
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:site_name", content: "Warfarin Wiki" },
+    { property: "og:site_name", content: SITE_NAME },
+  
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },

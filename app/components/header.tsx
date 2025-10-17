@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { SITE_NAME } from "~/config/site-config";
 
 export default function Header({ lang = "en" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function Header({ lang = "en" }) {
               src="/castle3.png"
               className="h-8 w-8 rounded object-contain"
             />
-            <span className="font-semibold text-lg">Warfarin Wiki</span>
+            <span className="font-semibold text-lg">{SITE_NAME}</span>
           </a>
 
           <Button

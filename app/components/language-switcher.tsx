@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
-import { LANGUAGES } from "~/config/data-config";
+import { LANGUAGES } from "~/config/site-config";
 
 export function LanguageSwitcher() {
   const location = useLocation();

@@ -4,6 +4,7 @@ import WeaponList from "~/components/weapons/weapon-list";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
 import { fetchEntries } from "~/lib/fetch-utils";
+import { SITE_NAME } from "~/config/site-config";
 
 export function meta() {
   const title = "Weapons";
@@ -15,7 +16,7 @@ export function meta() {
 
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:site_name", content: "Warfarin Wiki" },
+    { property: "og:site_name", content: SITE_NAME },
 
     { name: "twitter:card", content: "summary" },
     { name: "twitter:title", content: title },

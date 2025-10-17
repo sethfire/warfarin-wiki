@@ -2,7 +2,6 @@ import { Outlet, useMatches, useParams } from "@remix-run/react";
 import AppSidebar from "~/components/app-sidebar";
 import TableOfContents from "~/components/table-of-contents";
 import Header from "~/components/header";
-import Footer from "~/components/footer";
 
 export default function Layout() {
   const { lang } = useParams();
@@ -22,6 +21,7 @@ export default function Layout() {
         </div>
         <TableOfContents items={tocItems} />
       </div>
+      {/* <Footer lang={lang} /> */}
     </main>
   );
 }

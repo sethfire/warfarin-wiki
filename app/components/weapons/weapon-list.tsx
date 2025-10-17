@@ -1,17 +1,5 @@
+import { weaponRarityColor } from "~/config/data-config";
 import { getItemIcon } from "~/lib/image-utils";
-
-function getWeaponRarityColor(value: number): string {
-  switch (value) {
-    case 0: return ""
-    case 1: return "#A0A0A0";
-    case 2: return "#DCDC00";
-    case 3: return "#26BBFD";
-    case 4: return "#9452FA";
-    case 5: return "#FFBB03";
-    case 6: return "#FE5A00";
-    default: return "";
-  }
-}
 
 export default function WeaponList({ lang, data }: { lang: string; data: any[] }) {
   const weapons = [...data].sort((a, b) => b.rarity - a.rarity);
@@ -34,12 +22,12 @@ export default function WeaponList({ lang, data }: { lang: string; data: any[] }
                 textShadow: '-1px 0 0 #000,1px 0 0 #000,0 -1px 0 #000,0 1px 0 #000,-1px -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000'
               }}>{weapon.name}</span>
               <br />
-              <span style={{ color: getWeaponRarityColor(weapon.rarity) }}>
+              <span style={{ color: weaponRarityColor(weapon.rarity) }}>
                 {"★".repeat(weapon.rarity)}
               </span>
             </div>
 
-            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: getWeaponRarityColor(weapon.rarity) }}></div>
+            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: weaponRarityColor(weapon.rarity) }}></div>
           </div>
         </a>
       ))}

@@ -15,6 +15,24 @@ export default function AppSidebar({ lang }: { lang: string }) {
           <li><a href={`/${lang}/tutorials`} className="hover:text-primary transition-colors">Tutorials</a></li>
           <li><a href={`/${lang}/lore`} className="hover:text-primary transition-colors">Lore</a></li>
         </ul>
+        <div className="absolute bottom-0 left-0 w-full p-4 text-xs text-muted-foreground">
+          <div className="mb-2">
+            warfarin.wiki is a fan-made hobby project and is not affiliated with Hypergryph or Gryphline.
+          </div>
+          <div>
+            <a
+              href="https://github.com/sethfire/warfarin-wiki"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors underline"
+            >
+              GitHub Repository
+            </a>
+          </div>
+          {/* <div>
+            © {new Date().getFullYear()} warfarin.wiki
+          </div> */}
+        </div>
       </nav>
     </aside>
   );

@@ -15,6 +15,7 @@ import OperatorSkills from "~/components/operators/operator-skills";
 import OperatorTalents from "~/components/operators/operator-talents";
 import { fetchEntry } from "~/lib/fetch-utils";
 import { getCharSquareIcon } from "~/lib/image-utils";
+import { SITE_NAME } from "~/config/site-config";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: char } = data;
@@ -29,7 +30,7 @@ export function meta({ data }: { data: any }) {
 
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:site_name", content: "Warfarin Wiki" },
+    { property: "og:site_name", content: SITE_NAME },
     { property: "og:image", content: image },
 
     { name: "twitter:card", content: "summary" },
