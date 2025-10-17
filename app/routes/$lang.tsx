@@ -4,7 +4,7 @@ import TableOfContents from "~/components/table-of-contents";
 import Header from "~/components/header";
 import Footer from "~/components/footer";
 
-export default function OperatorsLayout() {
+export default function Layout() {
   const { lang } = useParams();
   if (!lang) throw new Response("", { status: 404 });
 
@@ -15,14 +15,12 @@ export default function OperatorsLayout() {
   return (
     <main>
       <Header lang={lang} />
-      <div className="max-w-[1536px] mx-auto">
-        <div className="flex">
-          <AppSidebar lang={lang} />
-          <div className="flex-1 min-w-0 max-w-5xl flex flex-col gap-4 px-4 xl:px-0">
-            <Outlet />
-          </div>
-          <TableOfContents items={tocItems} />
+      <div className="max-w-[1536px] mx-auto flex">
+        <AppSidebar lang={lang} />
+        <div className="flex-1 max-w-5xl px-4 xl:px-0">
+          <Outlet />
         </div>
+        <TableOfContents items={tocItems} />
       </div>
     </main>
   );
