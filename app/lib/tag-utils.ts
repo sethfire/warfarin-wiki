@@ -64,9 +64,8 @@ export const tagDefs: Record<string, { preDef: string; postDef: string }> = {
 export function replaceTags(input: string): string {
   return input.replace(/<@([\w.]+)>([\s\S]*?)<\/>/g, (match, tag, content) => {
     const def = tagDefs[tag];
-    if (def) {
-      return `${def.preDef}${content}${def.postDef}`;
-    }
+
+    if (def) return `${def.preDef}${content}${def.postDef}`;
     return content;
   });
 }

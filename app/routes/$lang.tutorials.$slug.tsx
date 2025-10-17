@@ -5,7 +5,7 @@ import { Separator } from "~/components/ui/separator";
 
 import { fetchEntry } from "~/lib/fetch-utils";
 import { getTutorialImage } from "~/lib/image-utils";
-import { replaceTags } from "~/lib/tag-definitions";
+import { replaceTags } from "~/lib/tag-utils";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: item } = data;

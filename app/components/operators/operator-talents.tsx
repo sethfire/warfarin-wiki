@@ -1,6 +1,6 @@
 import { parseValueMatrix } from "~/lib/blackboard-parser";
 import { getSkillIcon } from "~/lib/image-utils";
-import { replaceTags } from "~/lib/tag-definitions";
+import { replaceTags } from "~/lib/tag-utils";
 
 export default function OperatorTalents(
   { charGrowthTable, potentialTalentEffectTable }:

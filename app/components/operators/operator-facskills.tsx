@@ -1,5 +1,5 @@
 import { getBaseSkillIcon } from "~/lib/image-utils";
-import { replaceTags } from "~/lib/tag-definitions";
+import { replaceTags } from "~/lib/tag-utils";
 
 export default function OperatorFactorySkills({ spaceshipCharSkillTable, spaceshipSkillTable }: { spaceshipCharSkillTable: any, spaceshipSkillTable: any }) {
   if (!spaceshipCharSkillTable || !spaceshipCharSkillTable.skillList) { return <div className="text-muted-foreground">N/A</div>; }

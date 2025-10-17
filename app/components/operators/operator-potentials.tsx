@@ -1,5 +1,5 @@
 import { parseValueMatrix } from "~/lib/blackboard-parser";
-import { replaceTags } from "~/lib/tag-definitions";
+import { replaceTags } from "~/lib/tag-utils";
 
 export default function OperatorPotentials(
   { characterPotentialTable, potentialTalentEffectTable }:
