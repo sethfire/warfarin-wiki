@@ -51,7 +51,7 @@ export function getEnemyIcon(id: string): string {
 }
 
 export function getItemIcon(id: string): string {
-  // if (!id) return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/itemicon/.webp`;
+  // if (!id) return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/itemicon/placeholder.webp`;
   return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/itemicon/${id}.webp`;
 }
 

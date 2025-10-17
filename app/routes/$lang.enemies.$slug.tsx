@@ -2,16 +2,10 @@ import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
+import { enemyType } from "~/lib/config";
 
 import { fetchEntry } from "~/lib/fetch-utils";
 import { getEnemyIcon } from "~/lib/image-utils";
-
-const enemyType: Record<number, string> = {
-  0: 'Common',
-  1: 'Advanced',
-  2: 'Boss',
-  3: 'Elite',
-};
 
 export function meta({ data }: { data: any }) {
   const { lang, data: enemy } = data;
@@ -39,7 +33,7 @@ export function meta({ data }: { data: any }) {
 export async function loader({ params }: LoaderFunctionArgs) {
   const { lang, slug } = params;
   const data = await fetchEntry(lang!, "enemies", slug!);
-  if (!data) throw new Response("", { status: 404 });
+  if (!data) throw new Response("Not Found", { status: 404 });
   return { lang, data };
 }
 
@@ -58,7 +52,7 @@ export default function EnemyPage() {
           </BreadcrumbList>
         </Breadcrumb>
         <h1 className="text-2xl font-semibold mb-2">{data.summary.name}</h1>
-        <div className="text-sm text-muted-foreground mb-4">{enemyType[data.enemyTemplateDisplayInfoTable.displayType]} Enemy</div>
+        <div className="text-sm text-muted-foreground mb-4">{enemyType(data.enemyTemplateDisplayInfoTable.displayType)} Enemy</div>
         <Separator />
       </section>
 
@@ -76,7 +70,7 @@ export default function EnemyPage() {
         </div>
       </section>
 
-      <section id="abilities" className="scroll-mt-16">
+      <section id="trait" className="scroll-mt-16">
         <h2 className="text-xl font-semibold mb-2">Trait</h2>
         <Separator className="mb-4" />
         <ul className="list-disc pl-6">

@@ -1,39 +1,5 @@
+import { charElementIconId, charRarityColor, charTypeColor } from "~/lib/config";
 import { getCharElementIcon, getCharIcon, getClassIcon } from "~/lib/image-utils";
-
-function getCharTypeColor(type: string): string {
-  switch (type) {
-    case 'Cryst': return '#21C6D0CC';
-    case 'Fire': return '#FF623DCC';
-    case 'Natural': return '#9EDC23CC';
-    case 'Physical': return '#888888CC';
-    case 'Pulse': return '#FFC000CC';
-    default: return '#888888CC';
-  }
-}
-
-function getCharElementIconId(type: string): string {
-  switch (type) {
-    case 'Cryst': return 'icon_charattrtype_cold';
-    case 'Fire': return 'icon_charattrtype_fire';
-    case 'Natural': return 'icon_charattrtype_nature';
-    case 'Physical': return 'icon_charattrtype_physical';
-    case 'Pulse': return 'icon_charattrtype_pulse';
-    default: return 'icon_charattrtype_physical';
-  }
-}
-
-function getCharRarityColor(value: number): string {
-  switch (value) {
-    case 0: return ""
-    case 1: return "#A0A0A0";
-    case 2: return "#DCDC00";
-    case 3: return "#26BBFD";
-    case 4: return "#9452FA";
-    case 5: return "#FFBB03";
-    case 6: return "#FE5A00";
-    default: return "";
-  }
-}
 
 export default function OperatorList({ lang, data }: { lang: string; data: any[] }) {
   const chars = [...data].sort((a, b) => b.rarity - a.rarity);
@@ -60,10 +26,10 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
 
               <div
                 className="absolute left-[38px] top-[4px] h-[28px] w-[28px] p-0.5 rounded"
-                style={{ backgroundColor: getCharTypeColor(char.charTypeId) }}
+                style={{ backgroundColor: charTypeColor(char.charTypeId) }}
               >
                 <img
-                  src={getCharElementIcon(getCharElementIconId(char.charTypeId))}
+                  src={getCharElementIcon(charElementIconId(char.charTypeId))}
                   className="h-full w-full object-contain scale-125" loading="lazy" decoding="async"
                 />
               </div>
@@ -75,12 +41,10 @@ export default function OperatorList({ lang, data }: { lang: string; data: any[]
                   textShadow: '-1px 0 0 #000,1px 0 0 #000,0 -1px 0 #000,0 1px 0 #000,-1px -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000'
                 }}>{char.name}</span>
                 <br />
-                <span style={{ color: getCharRarityColor(char.rarity) }}>
-                  {"★".repeat(char.rarity)}
-                </span>
+                <span style={{ color: charRarityColor(char.rarity) }}>{"★".repeat(char.rarity)}</span>
               </div>
 
-              <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: getCharRarityColor(char.rarity) }}></div>
+              <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: charRarityColor(char.rarity) }}></div>
             </div>
           </a>
         ))}

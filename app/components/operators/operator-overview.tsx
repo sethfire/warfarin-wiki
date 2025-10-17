@@ -1,13 +1,5 @@
+import { attributeType, weaponType } from "~/lib/config";
 import { getAttributeIcon, getCharElementIcon, getClassIcon } from "~/lib/image-utils";
-
-function getAttributeType(attrId: number) {
-  switch (attrId) {
-    case 39: return "Strength (STR)";
-    case 40: return "Agility (AGI)";
-    case 41: return "Intellect (INT)";
-    case 42: return "Will (WILL)";
-  }
-}
 
 export default function OperatorOverview(
   { characterTable, itemTable, charTypeTable, charProfessionTable }:
@@ -29,57 +21,45 @@ export default function OperatorOverview(
         </colgroup>
         <tbody>
           <tr>
-          <th className="bg-card p-1 text-center" colSpan={4}>Overview</th>
+            <th className="bg-card p-1 text-center" colSpan={4}>Overview</th>
           </tr>
           <tr>
-          <th className="bg-card p-1 text-center">Name</th>
-          <td className="px-2 py-1 text-center">{characterTable.name}</td>
-          <th className="bg-card p-1 text-center">Internal Name</th>
-          <td className="px-2 py-1 text-center">{characterTable.charId}</td>
+            <th className="bg-card p-1 text-center">Name</th>
+            <td className="px-2 py-1 text-center">{characterTable.name}</td>
+            <th className="bg-card p-1 text-center">Internal Name</th>
+            <td className="px-2 py-1 text-center">{characterTable.charId}</td>
           </tr>
           <tr>
-          <th className="bg-card p-1 text-center">Description</th>
-          <td className="border-t px-2 py-1 text-center" colSpan={3}>{itemTable.desc}</td>
+            <th className="bg-card p-1 text-center">Description</th>
+            <td className="border-t px-2 py-1 text-center" colSpan={3}>{itemTable.desc}</td>
           </tr>
           <tr>
-          <th className="bg-card p-1 text-center">Trait</th>
-          <td className="border-t px-2 py-1 text-center" colSpan={3}>{charProfessionTable.desc}</td>
+            <th className="bg-card p-1 text-center">Trait</th>
+            <td className="border-t px-2 py-1 text-center" colSpan={3}>{charProfessionTable.desc}</td>
           </tr>
           <tr>
-          <th className="bg-card p-1 text-center">Rarity</th>
-          <td className="border-t px-2 py-1 text-center">{characterTable.rarity}★</td>
-          <th className="bg-card p-1 text-center">Weapon</th>
-          <td className="border-t px-2 py-1 text-center">
-              {(() => {
-                switch (characterTable.weaponType) {
-                  case 0: return "0";
-                  case 1: return "Sword";
-                  case 2: return "Orbiter";
-                  case 3: return "Great Sword";
-                  case 4: return "4";
-                  case 5: return "Polearm";
-                  case 6: return "Guns";
-                }
-              })()}
-            </td>
+            <th className="bg-card p-1 text-center">Rarity</th>
+            <td className="border-t px-2 py-1 text-center">{characterTable.rarity}★</td>
+            <th className="bg-card p-1 text-center">Weapon</th>
+            <td className="border-t px-2 py-1 text-center">{weaponType(characterTable.weaponType)}</td>
           </tr>
           <tr>
-          <th className="bg-card p-1 text-center">Element</th>
-          <td className="border-t px-2 py-1 text-center">
+            <th className="bg-card p-1 text-center">Element</th>
+            <td className="border-t px-2 py-1 text-center">
+                <span className="flex items-center justify-center gap-1">
+                    {/* <div className={`rounded-sm`} style={{ backgroundColor: `#${charTypeTable.color}` }}>
+                      <img 
+                        src={getCharElementIcon(charTypeTable.icon)} 
+                        className="w-5 h-5 object-contain scale-125" loading="lazy" decoding="async" 
+                      />
+                    </div> */}
+                  {charTypeTable.name}
+                </span>
+              </td>
+            <th className="bg-card p-1 text-center">Class</th>
+            <td className="border-t px-2 py-1 text-center">
               <span className="flex items-center justify-center gap-1">
-                  <div className={`rounded-sm`} style={{ backgroundColor: `#${charTypeTable.color}` }}>
-                    <img 
-                      src={getCharElementIcon(charTypeTable.icon)} 
-                      className="w-5 h-5 object-contain scale-125" loading="lazy" decoding="async" 
-                    />
-                  </div>
-                {charTypeTable.name}
-              </span>
-            </td>
-          <th className="bg-card p-1 text-center">Class</th>
-          <td className="border-t px-2 py-1 text-center">
-              <span className="flex items-center justify-center gap-1">
-                <img src={getClassIcon(charProfessionTable.profession)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" />
+                {/* <img src={getClassIcon(charProfessionTable.profession)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" /> */}
                 {charProfessionTable.name}
               </span>
             </td>
@@ -89,14 +69,14 @@ export default function OperatorOverview(
           <td className="border-t px-2 py-1 text-center">
               <span className="flex items-center justify-center gap-1">
                 {/* <img src={getAttributeIcon(characterTable.mainAttrType)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" /> */}
-                {getAttributeType(characterTable.mainAttrType)}
+                {attributeType(characterTable.mainAttrType)}
               </span>
             </td>
           <th className="bg-card p-1 text-center">Secondary Attribute</th>
           <td className="border-t px-2 py-1 text-center">
               <span className="flex items-center justify-center gap-1">
                 {/* <img src={getAttributeIcon(characterTable.subAttrType)} className="w-5 h-5 object-contain" loading="lazy" decoding="async" /> */}
-                {getAttributeType(characterTable.subAttrType)}
+                {attributeType(characterTable.subAttrType)}
               </span>
             </td>
           </tr>

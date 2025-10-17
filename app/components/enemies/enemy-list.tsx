@@ -1,11 +1,5 @@
+import { enemyColor } from "~/lib/config";
 import { getEnemyIcon } from "../../lib/image-utils";
-
-const enemyRarityColors: Record<number, string> = {
-  0: '#26BBFD',  // Common
-  3: '#9452FA',  // Elite
-  1: '#FFBB03',  // Advanced
-  2: '#FE5A00',  // Boss
-};
 
 export default function EnemyList({ lang, data }: { lang: string; data: any[] }) {
   const displayTypeOrder = [2, 1, 3, 0];
@@ -36,7 +30,7 @@ export default function EnemyList({ lang, data }: { lang: string; data: any[] })
               <br />
             </div>
 
-            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: enemyRarityColors[enemy.displayType] }}></div>
+            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: enemyColor(enemy.displayType) }}></div>
           </div>
         </a>
       ))}

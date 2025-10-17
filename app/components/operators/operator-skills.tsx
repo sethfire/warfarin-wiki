@@ -1,4 +1,5 @@
 import { parseValues } from "~/lib/blackboard-parser";
+import { skillType } from "~/lib/config";
 import { getSkillIcon } from "~/lib/image-utils";
 import { replaceTags } from "~/lib/tag-utils";
 
@@ -76,45 +77,32 @@ export default function OperatorSkills(
     <div className="flex flex-col gap-4">
       {skills.map((skillGroup: any) => (
         <div key={skillGroup.id}>
-          <table className="w-full border-collapse table-auto text-sm">
-            <thead className="bg-card">
-              <tr>
-                <td colSpan={13} className="p-2">
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-sm bg-muted">
-                      <a href={getSkillIcon(skillGroup.icon, true)}
-                        target="_blank" rel="noopener noreferrer">
-                        <img src={getSkillIcon(skillGroup.icon)}
-                          className="w-12 h-12" loading="lazy" decoding="async" />
-                      </a>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">{skillGroup.name}</h3>
-                      <div className="text-sm text-muted-foreground">
-                        {(() => {
-                          switch (skillGroup.type) {
-                            case 0: return "Normal Attack";
-                            case 1: return "Normal Skill";
-                            case 2: return "Ultimate";
-                            case 3: return "Combo Skill";
-                          }
-                        })()}
-                      </div>
+          <table className="w-full border-collapse table-auto text-sm bg-card">
+            <tr>
+              <td className="p-2">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-sm bg-muted">
+                    <a href={getSkillIcon(skillGroup.icon, true)} target="_blank" rel="noopener noreferrer">
+                      <img src={getSkillIcon(skillGroup.icon)} className="w-12 h-12" loading="lazy" decoding="async" />
+                    </a>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{skillGroup.name}</h3>
+                    <div className="text-sm text-muted-foreground">
+                      {skillType(skillGroup.type)}
                     </div>
                   </div>
-                </td>
-              </tr>
-            </thead>
-            <tbody className="bg-card">
-              <tr>
-                <td colSpan={13} className="p-2">
-                  <div 
-                    className="text-sm whitespace-pre-line" 
-                    dangerouslySetInnerHTML={{ __html: replaceTags(parseValues(skillGroup.desc, skillGroup.blackboard)) }} 
-                  />
-                </td>
-              </tr>
-            </tbody>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td className="p-2">
+                <div 
+                  className="text-sm whitespace-pre-line" 
+                  dangerouslySetInnerHTML={{ __html: replaceTags(parseValues(skillGroup.desc, skillGroup.blackboard)) }} 
+                />
+              </td>
+            </tr>
           </table>
           <div className="overflow-x-auto">
           <table className="w-full border-collapse table-auto text-sm">
