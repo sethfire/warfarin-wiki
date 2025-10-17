@@ -11,6 +11,7 @@ export default function AppSidebar({ lang }: { lang: string }) {
           <li><a href={`/${lang}/operators`} className="hover:text-primary transition-colors">Operators</a></li>
           <li><a href={`/${lang}/weapons`} className="hover:text-primary transition-colors">Weapons</a></li>
           <li><a href={`/${lang}/enemies`} className="hover:text-primary transition-colors">Enemies</a></li>
+          <li><a href={`/${lang}/facilities`} className="hover:text-primary transition-colors">Facilities</a></li>
           <li><a href={`/${lang}/items`} className="hover:text-primary transition-colors">Items</a></li>
           <li><a href={`/${lang}/tutorials`} className="hover:text-primary transition-colors">Tutorials</a></li>
           <li><a href={`/${lang}/lore`} className="hover:text-primary transition-colors">Lore</a></li>
