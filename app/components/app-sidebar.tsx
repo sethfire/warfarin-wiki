@@ -17,7 +17,7 @@ export default function AppSidebar({ lang }: { lang: string }) {
         </ul>
         <div className="absolute bottom-0 left-0 w-full p-4 text-xs text-muted-foreground">
           <div className="mb-2">
-            warfarin.wiki is a fan-made hobby project and is not affiliated with Hypergryph or Gryphline.
+            Disclaimer: warfarin.wiki is a fan-made hobby project and is not affiliated with Hypergryph or Gryphline.
           </div>
           <div>
             <a
@@ -26,7 +26,7 @@ export default function AppSidebar({ lang }: { lang: string }) {
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors underline"
             >
-              GitHub Repository
+              GitHub
             </a>
           </div>
           {/* <div>
