@@ -1,17 +1,5 @@
+import { itemRarityColor } from "~/config/data-config";
 import { getItemIcon } from "~/lib/image-utils";
-
-function getItemRarityColor(value: number): string {
-  switch (value) {
-    case 0: return "#A0A0A0"
-    case 1: return "#A0A0A0";
-    case 2: return "#DCDC00";
-    case 3: return "#26BBFD";
-    case 4: return "#9452FA";
-    case 5: return "#FFBB03";
-    case 6: return "#FE5A00";
-    default: return "#A0A0A0";
-  }
-}
 
 export default function ItemList({ lang, data }: { lang: string; data: any[] }) {
   const items = [...data].sort((a, b) => a.type - b.type);
@@ -37,7 +25,7 @@ export default function ItemList({ lang, data }: { lang: string; data: any[] }) 
               <span className="text-muted-foreground">{item.typeName}</span>
             </div>
 
-            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: getItemRarityColor(item.rarity) }}></div>
+            <div className="absolute left-0 right-0 bottom-0 h-[4px]" style={{ backgroundColor: itemRarityColor(item.rarity) }}></div>
           </div>
         </a>
       ))}

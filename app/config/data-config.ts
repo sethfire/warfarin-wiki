@@ -1,3 +1,11 @@
+export const LANGUAGES = [
+  { code: "en", label: "EN" },
+  { code: "cn", label: "CN" },
+  { code: "jp", label: "JP" },
+  { code: "kr", label: "KR" },
+//   { code: "tc", label: "TC" },
+];
+
 export function enemyType(type: number): string {
   switch (type) {
     case 0: return "Common";
@@ -20,6 +28,19 @@ export function enemyColor(type: number): string {
 
 export function charRarityColor(value: number): string {
   switch (value) {
+    case 1: return "#A0A0A0";
+    case 2: return "#DCDC00";
+    case 3: return "#26BBFD";
+    case 4: return "#9452FA";
+    case 5: return "#FFBB03";
+    case 6: return "#FE5A00";
+    default: return "#FFFFFF";
+  }
+}
+
+export function itemRarityColor(value: number): string {
+  switch (value) {
+    case 0: return "#A0A0A0"
     case 1: return "#A0A0A0";
     case 2: return "#DCDC00";
     case 3: return "#26BBFD";
@@ -54,6 +75,9 @@ export function charElementIconId(type: string): string {
 
 export function attributeType(attrId: number) {
   switch (attrId) {
+    case 1: return "HP";
+    case 2: return "ATK";
+    case 3: return "DEF";
     case 39: return "STR";
     case 40: return "AGI";
     case 41: return "INT";
@@ -80,5 +104,35 @@ export function skillType(type: number): string {
     case 2: return "Ultimate";
     case 3: return "Combo Skill";
     default: return "Unknown";
+  }
+}
+
+export function getUnlockText(breakStage: number, level: number): string {
+  switch (breakStage) {
+    case 1:
+      switch (level) {
+        case 1: return "Promote to E1 to unlock";
+        case 2: return "Promote to E1 to activate the upgraded effect";
+        default: return "";
+      }
+    case 2:
+      switch (level) {
+        case 1: return "Promote to E2 to unlock";
+        case 2: return "Promote to E2 to activate the upgraded effect";
+        default: return "";
+      }
+    case 3:
+      switch (level) {
+        case 1: return "Promote to E3 to unlock";
+        case 2: return "Promote to E3 to activate the upgraded effect";
+        default: return "";
+      }
+    case 4:
+      switch (level) {
+        case 1: return "Promote to E4 to unlock";
+        case 2: return "Promote to E4 to activate the upgraded effect";
+        default: return "";
+      }
+    default: return "";
   }
 }

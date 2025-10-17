@@ -1,16 +1,4 @@
-import { getAttributeIcon } from "~/lib/image-utils";
-
-function getAttributeName(attrId: number) {
-  switch (attrId) {
-    case 1: return "HP";
-    case 2: return "ATK";
-    case 3: return "DEF";
-    case 39: return "STR";
-    case 40: return "AGI";
-    case 41: return "INT";
-    case 42: return "WILL";
-  }
-}
+import { attributeType } from "~/config/data-config";
 
 export default function OperatorAttributes(
   { characterTable }:
@@ -53,7 +41,7 @@ export default function OperatorAttributes(
         }
       });
     } else {
-      // If milestone not found, push nulls
+
       statTypes.forEach(statType => {
         attributeMap.get(statType).push(null);
       });
@@ -108,7 +96,7 @@ export default function OperatorAttributes(
               <th className="bg-card p-1 w-1/7">
                 <div className="flex items-center justify-center gap-1">
                   {/* <img src={getAttributeIcon(statType)} className="w-5 h-5" loading="lazy" decoding="async" /> */}
-                  {getAttributeName(statType)}
+                  {attributeType(statType)}
                 </div>
               </th>
               {attributeMap.get(statType).map((value: string, idx: number) => (

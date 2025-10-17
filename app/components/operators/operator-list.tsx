@@ -1,4 +1,4 @@
-import { charElementIconId, charRarityColor, charTypeColor } from "~/lib/config";
+import { charElementIconId, charRarityColor, charTypeColor } from "~/config/data-config";
 import { getCharElementIcon, getCharIcon, getClassIcon } from "~/lib/image-utils";
 
 export default function OperatorList({ lang, data }: { lang: string; data: any[] }) {

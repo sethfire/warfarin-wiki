@@ -1,4 +1,4 @@
-import { attributeType, weaponType } from "~/lib/config";
+import { attributeType, weaponType } from "~/config/data-config";
 import { getAttributeIcon, getCharElementIcon, getClassIcon } from "~/lib/image-utils";
 
 export default function OperatorOverview(

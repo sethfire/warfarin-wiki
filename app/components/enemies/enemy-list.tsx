@@ -1,4 +1,4 @@
-import { enemyColor } from "~/lib/config";
+import { enemyColor } from "~/config/data-config";
 import { getEnemyIcon } from "../../lib/image-utils";
 
 export default function EnemyList({ lang, data }: { lang: string; data: any[] }) {

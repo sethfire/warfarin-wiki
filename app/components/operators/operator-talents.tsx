@@ -1,4 +1,5 @@
 import { parseValueMatrix } from "~/lib/blackboard-parser";
+import { getUnlockText } from "~/config/data-config";
 import { getSkillIcon } from "~/lib/image-utils";
 import { replaceTags } from "~/lib/tag-utils";
 
@@ -11,16 +12,6 @@ export default function OperatorTalents(
 
   const talentNodeMap = charGrowthTable.talentNodeMap;
   if (!talentNodeMap) return null;
-
-  const getUnlockText = (breakStage: number, level: number) => {
-    const talentUnlockDescription: { [key: number]: { [key: number]: string } } = {
-      1: { 1: "Promote to E1 to unlock", 2: "Promote to E1 to activate the upgraded effect" },
-      2: { 1: "Promote to E2 to unlock", 2: "Promote to E2 to activate the upgraded effect" },
-      3: { 1: "Promote to E3 to unlock", 2: "Promote to E3 to activate the upgraded effect" },
-      4: { 1: "Promote to E4 to unlock", 2: "Promote to E4 to activate the upgraded effect" }
-    };
-    return talentUnlockDescription[breakStage]?.[level] ?? "";
-  };
 
   const talents: any[] = [];
   for (const node of Object.values(talentNodeMap) as any[]) {

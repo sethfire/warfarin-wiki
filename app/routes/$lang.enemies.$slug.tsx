@@ -2,7 +2,7 @@ import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
-import { enemyType } from "~/lib/config";
+import { enemyType } from "~/config/data-config";
 
 import { fetchEntry } from "~/lib/fetch-utils";
 import { getEnemyIcon } from "~/lib/image-utils";
