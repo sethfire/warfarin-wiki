@@ -16,7 +16,7 @@ export default function Layout() {
       <Header lang={lang} />
       <div className="max-w-[1536px] mx-auto flex">
         <AppSidebar lang={lang} />
-        <div className="flex-1 max-w-5xl px-4 xl:px-0">
+        <div className="flex-1 max-w-5xl px-4 xl:px-0 min-w-0">
           <Outlet />
         </div>
         <TableOfContents items={tocItems} />
