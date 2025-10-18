@@ -19,18 +19,18 @@ export default function RecipeTable({ recipes, facilities, items, lang }: { reci
         {recipes.map((recipe: any) => (
           <tr key={recipe.id}>
             <td className="p-2 border-t">
-              {recipe.formulaDesc}
-                {(() => {
-                  const facility = facilities.find((f: any) => f.id === recipe.machineId);
-                  if (!facility) return null;
-                  return (
-                    <>
-                      <br />Facility: <a href={`/${lang}/facilities/${facility.id}`} className="text-blue-500 hover:underline">
-                        {facility.name}
-                      </a>
-                    </>
-                  );
-                })()}
+              <span className="whitespace-nowrap">{recipe.formulaDesc}</span>
+              {(() => {
+                const facility = facilities.find((f: any) => f.id === recipe.machineId);
+                if (!facility) return null;
+                return (
+                  <span className="whitespace-nowrap">
+                    <br />Facility: <a href={`/${lang}/facilities/${facility.id}`} className="text-blue-500 hover:underline">
+                      {facility.name}
+                    </a>
+                  </span>
+                );
+              })()}
             </td>
               <td className="p-4 border-t">
                 <div className="flex items-center gap-2">
