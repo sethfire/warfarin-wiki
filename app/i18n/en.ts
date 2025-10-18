@@ -34,4 +34,11 @@ export default {
   "fac.recipe": "Recipe",
   "fac.input": "Input",
   "fac.output": "Output",
+
+  "recipe.obtaining": "Obtaining",
+  "recipe.usage": "Usage",
+  "recipe.recipe": "Recipe",
+  "recipe.facility": "Facility",
+  "recipe.input": "Input",
+  "recipe.output": "Output",
 } as const;

@@ -13,6 +13,7 @@ import { ArrowRight, Clock, Plus } from "lucide-react";
 import CarouselGallery from "~/components/carousel-gallery";
 import Item from "~/components/items/item";
 import { i18n } from "~/i18n";
+import RecipeTable from "~/components/items/recipes";
 
 export function meta({ data }: { data: any }) {
   const { lang, data: facility } = data;
@@ -45,12 +46,13 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const { lang, slug } = params;
   const data = await fetchEntry(lang!, "facilities", slug!);
   const items = await fetchEntries(lang!, "items");
+  const facilities = await fetchEntries(lang!, "facilities");
   if (!data) throw new Response("", { status: 404 });
-  return { lang, data, items };
+  return { lang, data, items, facilities };
 }
 
 export default function ItemPage() {
-  const { lang, data, items }: any = useLoaderData<typeof loader>();
+  const { lang, data, items, facilities }: any = useLoaderData<typeof loader>();
   const t = i18n(lang);
   
   return (
@@ -85,72 +87,7 @@ export default function ItemPage() {
         <section id="recipes" className="scroll-mt-16">
           <h2 className="text-xl font-semibold mb-2">{t("fac.recipes")}</h2>
           <Separator className="mb-4" />
-          <div className="overflow-x-auto">
-            <table className="border-collapse table-auto text-sm">
-              <thead className="bg-card">
-                <tr>
-                  <th className="p-2">{t("fac.recipe")}</th>
-                  <th className="p-2">{t("fac.input")}</th>
-                  <th className="p-2"></th>
-                  <th className="p-2">{t("fac.output")}</th>
-                </tr>
-              </thead>
-              <tbody className="bg-muted">
-                {data.factoryMachineCraftTable.map((recipe: any) => (
-                  <tr key={recipe.id}>
-                    <td className="p-2">{recipe.formulaDesc}</td>
-                    <td className="p-4">
-                      <div className="flex items-center gap-2">
-                        {recipe.ingredients[0].group.map((input: any, index: number, arr: any[]) => {
-                          const itemData = items.find((item: any) => item.id === input.id);
-                          return (
-                            <React.Fragment key={index}>
-                              <Item
-                                link={`/${lang}/items/${itemData.id}`}
-                                icon={getItemIcon(itemData.iconId)}
-                                name={itemData.name}
-                                count={input.count}
-                                rarity={itemData.rarity}
-                              />
-                              {index < arr.length - 1 && <Plus className="w-6 h-6" />}
-                            </React.Fragment>
-                          );
-                        })}
-                      </div>
-                    </td>
-                    <td className="p-4">
-                        <div className="flex flex-col items-center gap-1">
-                          <ArrowRight/>
-                          <span className="flex items-center gap-1 text-xs">
-                            <Clock className="w-4 h-4" />
-                            {recipe.progressRound}s
-                          </span>
-                        </div>
-                    </td>
-                    <td className="p-2">
-                        <div className="flex items-center gap-2">
-                          {recipe.outcomes[0].group.map((input: any, index: number, arr: any[]) => {
-                            const itemData = items.find((item: any) => item.id === input.id);
-                            return (
-                              <React.Fragment key={index}>
-                                <Item
-                                  link={`/${lang}/items/${itemData.id}`}
-                                  icon={getItemIcon(itemData.iconId)}
-                                  name={itemData.name}
-                                  count={input.count}
-                                  rarity={itemData.rarity}
-                                />
-                                {index < arr.length - 1 && <Plus className="w-6 h-6" />}
-                              </React.Fragment>
-                            );
-                          })}
-                        </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <RecipeTable recipes={data.factoryMachineCraftTable} facilities={facilities} items={items} lang={lang} />
         </section>
       )}
     </div>
