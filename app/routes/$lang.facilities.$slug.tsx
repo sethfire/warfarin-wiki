@@ -100,7 +100,7 @@ export default function ItemPage() {
                   <tr key={recipe.id}>
                     <td className="p-2">{recipe.formulaDesc}</td>
                     <td className="p-4">
-                      <div className="flex flex-wrap items-center gap-2">
+                      <div className="flex items-center gap-2">
                         {recipe.ingredients[0].group.map((input: any, index: number, arr: any[]) => {
                           const itemData = items.find((item: any) => item.id === input.id);
                           return (
@@ -128,7 +128,7 @@ export default function ItemPage() {
                         </div>
                     </td>
                     <td className="p-2">
-                        <div className="flex flex-wrap items-center gap-2">
+                        <div className="flex items-center gap-2">
                           {recipe.outcomes[0].group.map((input: any, index: number, arr: any[]) => {
                             const itemData = items.find((item: any) => item.id === input.id);
                             return (
