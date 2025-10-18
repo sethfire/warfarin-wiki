@@ -7,3 +7,15 @@ export const LANGUAGES = [
   { code: "kr", label: "KR" },
 //   { code: "tc", label: "TC" },
 ];
+
+
+export const NAVIGATION = [
+  // { label: "Home",      href: `` },
+  { label: "Operators", href: `operators` },
+  { label: "Weapons",   href: `weapons` },
+  { label: "Enemies",   href: `enemies` },
+  { label: "Facilities",href: `facilities` },
+  { label: "Items",     href: `items` },
+  { label: "Tutorials", href: `tutorials` },
+  { label: "Lore",      href: `lore` },
+];

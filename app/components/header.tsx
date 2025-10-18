@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { SITE_NAME } from "~/config/site-config";
+import { NAVIGATION, SITE_NAME } from "~/config/site-config";
 
 export default function Header({ lang = "en" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,17 +10,7 @@ export default function Header({ lang = "en" }) {
     setIsOpen(!isOpen);
     if (!isOpen) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = '';
-};
-
-  const navItems = [
-    { label: "Home", href: `/${lang}` },
-    { label: "Operators", href: `/${lang}/operators` },
-    { label: "Weapons", href: `/${lang}/weapons` },
-    { label: "Enemies", href: `/${lang}/enemies` },
-    { label: "Items", href: `/${lang}/items` },
-    { label: "Tutorials", href: `/${lang}/tutorials` },
-    { label: "Lore", href: `/${lang}/lore` },
-  ];
+  };
 
   return (
     <>
@@ -60,10 +50,10 @@ export default function Header({ lang = "en" }) {
         }`}
       >
         <div className="flex flex-col p-6 pt-0 gap-4">
-          {navItems.map((item) => (
+          {NAVIGATION.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={`/${lang}/${item.href}`}
               className="text-lg hover:text-blue-600"
               onClick={toggleMenu}
             >

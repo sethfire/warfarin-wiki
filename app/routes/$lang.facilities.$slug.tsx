@@ -34,6 +34,13 @@ export function meta({ data }: { data: any }) {
   ];
 }
 
+// export const handle = {
+//   getToc: (_data: any) => [
+//     { id: "summary", title: "Overview" },
+//     { id: "recipes", title: "Recipes" },
+//   ],
+// };
+
 export async function loader({ params }: LoaderFunctionArgs) {
   const { lang, slug } = params;
   const data = await fetchEntry(lang!, "facilities", slug!);
@@ -69,7 +76,7 @@ export default function ItemPage() {
           thumb: getBuildingImage(`image_${data.summary.id}`),
           download: getBuildingImage(`image_${data.summary.id}`, true),
           title: data.factoryBuildingTable.name,
-          desc: data.factoryBuildingTable.desc,
+          desc: `${data.factoryBuildingTable.desc}${data.factoryBuildingTable.powerConsume ? `\n\nPower use: ${data.factoryBuildingTable.powerConsume}` : ""}`,
           display: "object-contain",
         }]} changeAspectonMobile={true} showThumbnails={false} />
       </section>

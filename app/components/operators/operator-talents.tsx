@@ -46,10 +46,7 @@ export default function OperatorTalents(
       : (
         <div className="flex flex-col gap-4">
           {talents.map((talent) => (
-            <div
-              key={talent.id}
-              className="bg-muted dark:bg-card p-2"
-            >
+            <div key={talent.id} className="bg-muted dark:bg-card p-2">
               <div className="flex items-start gap-4 mb-2">
                 <div className="bg-muted rounded-sm overflow-hidden shrink-0">
                   <img

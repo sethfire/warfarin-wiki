@@ -52,7 +52,7 @@ export default function ItemPage() {
           </BreadcrumbList>
         </Breadcrumb>
         <h1 className="text-2xl font-semibold mb-2">{data.summary.name || "Unnamed Item"}</h1>
-        <div className="text-sm text-muted-foreground mb-4">{data.itemTable.rarity}★ {data.itemTypeTable.name} Item</div>
+        <div className="text-sm text-muted-foreground mb-4">{data.itemTypeTable.name}</div>
         <Separator />
       </section>
 
@@ -70,7 +70,7 @@ export default function ItemPage() {
             ) : (
               <>
                 <div className="whitespace-pre-line mb-4" dangerouslySetInnerHTML={{ __html: data.itemTable.desc }}></div>
-                <div className="whitespace-pre-line" dangerouslySetInnerHTML={{ __html: data.itemTable.decoDesc }}></div>
+                <div className="whitespace-pre-line text-muted-foreground" dangerouslySetInnerHTML={{ __html: data.itemTable.decoDesc }}></div>
               </>
             )}
           </div>
