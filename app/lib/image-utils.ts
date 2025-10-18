@@ -62,3 +62,8 @@ export function getTutorialImage(id: string): string {
 export function getLoreImage(id: string): string {
   return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/reading/${id}.webp`;
 }
+
+export function getBuildingImage(id: string, original: boolean = false): string {
+  if (original) return `${ASSET_CDN_URL}/${ASSET_CDN_VERSION}/buildingimage/${id}.png`;
+  else return `${STATIC_CDN_URL}/${STATIC_CDN_VERSION}/buildingimage/${id}.webp`;
+}

@@ -162,6 +162,20 @@ export function skillType(type: number): string {
   }
 }
 
+export function facilityType(type: string) {
+  switch (type) {
+    case "assemble_machine": return "Gear";
+    case "basic_machine": return "Processing";
+    case "battle_machine": return "Combat";
+    case "custom": return "Quick Construct";
+    case "electric_machine": return "Power";
+    case "extra_machine": return "Miscellaneous";
+    case "logistic": return "Logistics";
+    case "source_machine": return "Mining";
+    default: return "Unknown";
+  }
+}
+
 export function getUnlockText(breakStage: number, level: number): string {
   switch (breakStage) {
     case 1:

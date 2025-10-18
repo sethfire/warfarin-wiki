@@ -84,7 +84,7 @@ export default function CarouselGallery({
         </Button>
 
         {/* Caption */}
-        <div className="absolute right-0 bottom-0 left-0 p-4 text-xs">
+        <div className="absolute right-0 bottom-0 left-0 p-4 text-xs whitespace-pre-line">
           <b>{current.title}</b>
           <br />
           {current.desc}

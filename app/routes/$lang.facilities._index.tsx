@@ -2,7 +2,7 @@ import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
-import { itemRarityColor } from "~/config/data-config";
+import { facilityType, itemRarityColor } from "~/config/data-config";
 import { SITE_NAME } from "~/config/site-config";
 import { fetchEntries } from "~/lib/fetch-utils";
 import { getItemIcon } from "~/lib/image-utils";
@@ -28,20 +28,6 @@ export function meta() {
 export const handle = {
   getToc: () => [] as { id: string; title: string }[],
 };
-
-function facilityType(type: string) {
-  switch (type) {
-    case "assemble_machine": return "Gear";
-    case "basic_machine": return "Processing";
-    case "battle_machine": return "Combat";
-    case "custom": return "Quick Construct";
-    case "electric_machine": return "Power";
-    case "extra_machine": return "Miscellaneous";
-    case "logistic": return "Logistics";
-    case "source_machine": return "Mining";
-    default: return "Unknown";
-  }
-}
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const { lang } = params;

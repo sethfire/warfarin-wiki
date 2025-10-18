@@ -25,4 +25,9 @@ export default {
   "char.weapon": "武器",
   "char.element": "属性",
 
+  "fac.facility": "施設",
+  "fac.recipes": "レシピ",
+  "fac.recipe": "レシピ",
+  "fac.input": "入力",
+  "fac.output": "出力",
 } as const;

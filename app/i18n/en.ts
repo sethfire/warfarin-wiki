@@ -3,7 +3,11 @@ export default {
   "common.operators": "Operators",
   "common.weapons": "Weapons",
   "common.enemies": "Enemies",
-  
+  "common.facilities": "Facilities",
+  "common.items": "Items",
+  "common.tutorials": "Tutorials",
+  "common.lore": "Lore",
+
   "common.navigation": "Navigation",
   "common.language": "Language",
 
@@ -24,4 +28,10 @@ export default {
   "char.class": "Class",
   "char.weapon": "Weapon",
   "char.element": "Element",
+
+  "fac.facility": "Facility",
+  "fac.recipes": "Recipes",
+  "fac.recipe": "Recipe",
+  "fac.input": "Input",
+  "fac.output": "Output",
 } as const;
